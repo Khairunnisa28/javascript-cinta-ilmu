@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nilai Siswa</title>
+</head>
+<body>
+  <h1>Program menghitung Nilai Akhir siswa</h1>
+  <label>Nilai Harian: <input type="number" id="tugas"></label><br>
+  <label>Nilai UTS: <input type="number" id="uts"></label><br>
+  <label>Nilai UAS: <input type="number" id="uas"></label><br>
+  <button id="hitung">Hitung Nilai Akhir</button>
+  <h3 id="output"></h3>
+
+  <script>
+    let tugasInput = document.getElementById("tugas");
+    let utsInput = document.getElementById("uts");
+    let uasInput = document.getElementById("uas");
+    let tombol = document.getElementById("hitung");
+    let hasil = document.getElementById("output");
+
+    tombol.onclick = () => {
+      let tugas = parseFloat(tugasInput.value) || 0;
+      let uts = parseFloat(utsInput.value) || 0;
+      let uas = parseFloat(uasInput.value) || 0;
+
+      let nilaiAkhir = (tugas * 0.3) + (uts * 0.3) + (uas * 0.4);
+      let predikat = "";
+
+      if (nilaiAkhir > 90 && nilaiAkhir <= 100){
+        predikat = "A";
+      } else if (nilaiAkhir > 80 && nilaiAkhir <= 90){
+        predikat = "B";
+      } else if (nilaiAkhir > 70 && nilaiAkhir <= 80){
+        predikat = "C";
+      } else{
+        predikat = "D";
+      }
+
+      hasil.innerHTML= "Nilai Akhir: " + nilaiAkhir + "\nPredikat: " + predikat;
+    }
+  </script>
+</body>
+</html>
